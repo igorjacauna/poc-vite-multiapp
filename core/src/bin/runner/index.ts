@@ -3,18 +3,24 @@ import react from '@vitejs/plugin-react'
 
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'pathe';
-import moduleRoutesPlugin from './plugin';
+import modulesPlugin from './plugins/modules';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 async function createViteConfig(): Promise<InlineConfig> {
 
+  const root = resolve(__dirname, "../../src/app");
+
   return {
-    plugins: [react(), moduleRoutesPlugin()],
-    root: resolve(__dirname, '../../'),
+    plugins: [react(), modulesPlugin()],
+    root,
     build: {
       outDir: `${process.cwd()}/dist`,
-    }
+    },
+    envPrefix: 'BO_',
+    optimizeDeps: {
+      include: ['cookie'],
+    },
   }
 }
 

@@ -1,31 +1,28 @@
 {
-  "name": "module-b",
-  "version": "0.0.1",
+  "name": "@poc/module-b",
+  "version": "0.0.2",
   "type": "module",
   "main": "src/module.config.tsx",
+  "publishConfig": {
+    "registry": "http://localhost:4873"
+  },
   "scripts": {
     "dev": "core-cli dev",
     "build": "core-cli build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "core": "0.0.1"
-  },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@poc/core": "0.0.15",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "eslint": "^9.19.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
+    "mobx": "^6.13.6",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.22.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "core": "link:../../../../Library/pnpm/global/5/node_modules/core"
-    }
   }
 }

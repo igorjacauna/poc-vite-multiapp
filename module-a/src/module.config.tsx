@@ -1,17 +1,29 @@
 import React from 'react'
-import moduleB from 'module-b';
+import type { ModuleConfig } from '@poc/core/cli'
 
 const ModuleAHome = React.lazy(() => import('./pages/ModuleAHome'))
 
-const moduleAConfig = {
+const moduleAConfig: ModuleConfig = {
   moduleName: 'module-a',
-  routes: [
+  routes: () => ([
     {
-      path: '/module-a/home',
+      path: '/',
       element: <ModuleAHome />
     },
-    ...moduleB.routes
-  ],
+  ]),
+  hooks: {
+    'app:beforeMount': async () => {
+      if (location.pathname === '/module-a') {
+        location.href = '/'
+      }
+    },
+    'cli:boot': () => {
+      console.log('module-a booted')
+    }
+  },
+  dependencies: [
+    '@poc/module-b'
+  ]
 }
 
 export default moduleAConfig
