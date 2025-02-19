@@ -2,7 +2,6 @@
 declare module 'virtual:modules' {
   import { Hookable } from "hookable";
   import type { RouteObject } from "react-router";
-  import type { Hooks } from './types';
   type MenuEntry = {
     label: string;
     icon?: string;

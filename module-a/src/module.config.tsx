@@ -8,7 +8,7 @@ const moduleAConfig: ModuleConfig = {
   routes: () => ([
     {
       path: '/',
-      element: <ModuleAHome />
+      Component: ModuleAHome
     },
   ]),
   hooks: {

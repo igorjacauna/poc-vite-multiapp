@@ -13,7 +13,8 @@ async function appInit() {
     <StrictMode>
       <Shell/>
     </StrictMode>,
-  )
+  );
+  await hooks.callHook('app:afterRender');
 }
 
 boot(appInit, hooks);

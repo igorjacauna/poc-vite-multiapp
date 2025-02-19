@@ -16,11 +16,11 @@
   "exports": {
     "./cli": {
       "import": "./dist/bin/core-cli.mjs",
-      "types": "./src/bin/types.ts"
+      "types": "./src/bin/types.d.ts"
     },
     "./app": {
       "import": "./src/app/shared/index.ts",
-      "types": "./src/app/types.ts"
+      "types": "./src/app/types.d.ts"
     }
   },
   "scripts": {
