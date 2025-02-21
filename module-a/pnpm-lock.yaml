@@ -12,8 +12,8 @@ importers:
         specifier: ^9.20.0
         version: 9.20.0
       '@poc/core':
-        specifier: 0.0.15
-        version: 0.0.15
+        specifier: 0.0.17
+        version: 0.0.17
       '@poc/module-b':
         specifier: ^0.0.2
         version: 0.0.2
@@ -35,6 +35,9 @@ importers:
       globals:
         specifier: ^15.15.0
         version: 15.15.0
+      mobx:
+        specifier: ^6.13.6
+        version: 6.13.6
       mobx-react-lite:
         specifier: ^4.1.0
         version: 4.1.0(mobx@6.13.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -44,6 +47,9 @@ importers:
       typescript-eslint:
         specifier: ^8.24.1
         version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
+      vite:
+        specifier: 6.1.1
+        version: 6.1.1(jiti@2.4.2)
 
 packages:
 
@@ -368,8 +374,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@poc/core@0.0.15':
-    resolution: {integrity: sha512-RmcglBundbvlDUbjvycmhNGbQjkwE3KoqreG4m/03y2KoVVhuhw9V68xp9K+OzA5De82GGyRizzxlVnLp+b6Rw==}
+  '@poc/core@0.0.17':
+    resolution: {integrity: sha512-uGpgSt/RUxVck0pEC23D5N7Ba61/MDx6ti9GWyjPrEnl1eqaFiA6SIsr/zIOWI6K6iDUhr36+tQ/s1yq2PF2yQ==}
     hasBin: true
 
   '@poc/module-b@0.0.2':
@@ -1128,8 +1134,8 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  vite@6.1.0:
-    resolution: {integrity: sha512-RjjMipCKVoR4hVfPY6GQTgveinjNuyLw+qruksLDvA5ktI1150VmcMBKmQaEWJhg/j6Uaf6dNCNA0AfdzUb/hQ==}
+  vite@6.1.1:
+    resolution: {integrity: sha512-4GgM54XrwRfrOp297aIYspIti66k56v16ZnqHvrIM7mG+HjDlAwS7p+Srr7J6fGvEdOJ5JcQ/D9T7HhtdXDTzA==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -1464,9 +1470,9 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.0
 
-  '@poc/core@0.0.15':
+  '@poc/core@0.0.17':
     dependencies:
-      '@vitejs/plugin-react': 4.3.4(vite@6.1.0(jiti@2.4.2))
+      '@vitejs/plugin-react': 4.3.4(vite@6.1.1(jiti@2.4.2))
       commander: 13.1.0
       ejs: 3.1.10
       hookable: 5.5.3
@@ -1481,7 +1487,7 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
       react-router: 7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       sirv: 3.0.1
-      vite: 6.1.0(jiti@2.4.2)
+      vite: 6.1.1(jiti@2.4.2)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -1669,14 +1675,14 @@ snapshots:
       '@typescript-eslint/types': 8.24.1
       eslint-visitor-keys: 4.2.0
 
-  '@vitejs/plugin-react@4.3.4(vite@6.1.0(jiti@2.4.2))':
+  '@vitejs/plugin-react@4.3.4(vite@6.1.1(jiti@2.4.2))':
     dependencies:
       '@babel/core': 7.26.9
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.9)
       '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.9)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 6.1.0(jiti@2.4.2)
+      vite: 6.1.1(jiti@2.4.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -2237,7 +2243,7 @@ snapshots:
     dependencies:
       react: 19.0.0
 
-  vite@6.1.0(jiti@2.4.2):
+  vite@6.1.1(jiti@2.4.2):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.5.2

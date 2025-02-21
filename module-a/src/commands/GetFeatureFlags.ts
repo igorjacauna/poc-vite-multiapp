@@ -1,4 +1,4 @@
-import { getClientRequest } from "../helpers";
+import { getClientRequest } from "@poc/core/app";
 
 export default class Login {
   flags: string[];
