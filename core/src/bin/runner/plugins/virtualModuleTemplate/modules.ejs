@@ -1,4 +1,5 @@
 import moduleConfig from './src/module.config';
+import { hooks } from '@poc/core/app';
 
 <% if (hostConfig.dependencies && hostConfig.dependencies.length) { %>
   <% hostConfig.dependencies.forEach(function(dep, index) { %>
@@ -11,9 +12,7 @@ let routes = [];
 let menuEntries = [];
 let flags = [];
 
-
-
-export async function boot(appInit, hooks) {
+export async function boot() {
   flags = [...(moduleConfig.flags || [])];
   routes = (await Promise.resolve(moduleConfig.routes?.())) || [];
   menuEntries = (await Promise.resolve(moduleConfig.menuEntries?.())) || [];
@@ -33,8 +32,7 @@ export async function boot(appInit, hooks) {
   <% }); %>
 <% } %>
   initialized = true;
-  await hooks.callHook('cli:boot');
-  appInit?.();
+  await hooks.callHook('cli:afterBoot', hooks);
 }
 
 export function getFlags() {

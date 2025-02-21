@@ -17,4 +17,5 @@ async function appInit() {
   await hooks.callHook('app:afterRender');
 }
 
-boot(appInit, hooks);
+hooks.hook('app:afterBoot', appInit);
+boot();

@@ -1,19 +1,11 @@
 import { FetchOptions, ofetch } from "ofetch";
+import { rootStore } from "../../store";
 
 export function getToken() {
-  return gapi.auth2
-    .init({
-      client_id: `${import.meta.env.BO_GOOGLE_CLIENT_ID}.apps.googleusercontent.com`,
-      scope: 'profile email',
-    })
-    .then((auth2) => {
-      const googleUser = auth2.currentUser.get();
-
-      if (googleUser.isSignedIn()) {
-        return googleUser.getAuthResponse().id_token;
-      }
-      return null;
-    });
+  const userStore = rootStore.getStore<{
+    token: string;
+  }>('User');
+  return userStore;
 }
 
 export async function getClientRequest() {
@@ -26,7 +18,15 @@ export async function getClientRequest() {
   })
 }
 
-export default async function request<T>(url: string, options?: FetchOptions) {
+async function request<T>(url: string, options?: FetchOptions) {
   const client = await getClientRequest();
   return client<T>(url, { ...options, responseType: "json" });
+}
+
+export default {
+  get: <T>(url: string, options?: FetchOptions) => request<T>(url, { ...options, method: "GET" }),
+  post: <T>(url: string, options?: FetchOptions) => request<T>(url, { ...options, method: "POST" }),
+  put: <T>(url: string, options?: FetchOptions) => request<T>(url, { ...options, method: "PUT" }),
+  delete: <T>(url: string, options?: FetchOptions) => request<T>(url, { ...options, method: "DELETE" }),
+  patch: <T>(url: string, options?: FetchOptions) => request<T>(url, { ...options, method: "PATCH" }),
 }

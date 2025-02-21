@@ -4,6 +4,7 @@ export class RootStore {
   registerStore<T>(key: string, store: T): void {
     if (this.stores[key]) {
       console.warn(`A store com a key "${key}" já está registrada.`);
+      return;
     }
     this.stores[key] = store;
   }

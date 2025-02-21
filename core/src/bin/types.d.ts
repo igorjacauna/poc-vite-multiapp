@@ -1,20 +1,16 @@
-  import type { RouteObject } from "react-router";
+import type { RouteObject } from "react-router";
 
-  export type MenuEntry = {
-    label: string;
-    icon?: string;
-    route: string;
-  };
+export type MenuEntry = {
+  label: string;
+  icon?: string;
+  route: string;
+};
 
-  export type MenuEntryFn = () => MenuEntry[] | (() => Promise<MenuEntry[]>);
-
-  export type RoutesFn = () => RouteObject[] | (() => Promise<RouteObject[]>);
-
-  export type ModuleConfig = {
-    moduleName: string;
-    menuEntries?: MenuEntryFn;
-    flags?: string[];
-    routes?: RoutesFn;
-    dependencies?: string[];
-    hooks?: Partial<Hooks>;
-  };
+export type ModuleConfig = {
+  moduleName: string;
+  menuEntries?: () => (MenuEntry[] | Promise<MenuEntry[]>);
+  flags?: string[];
+  routes?: () => (RouteObject[] | Promise<RouteObject[]>);
+  dependencies?: string[];
+  hooks?: Partial<Hooks>;
+};

@@ -8,7 +8,7 @@ import { getHostConfig } from '../helpers/module';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export default function moduleRoutesPlugin(): Plugin {
+export default function modulesPlugin(): Plugin {
   const virtualModuleId = 'virtual:modules'
   const resolvedVirtualModuleId = '\0' + virtualModuleId
 

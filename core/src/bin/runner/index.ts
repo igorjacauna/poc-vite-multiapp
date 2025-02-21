@@ -17,9 +17,9 @@ async function createViteConfig(): Promise<InlineConfig> {
     build: {
       outDir: `${process.cwd()}/dist`,
     },
-    envPrefix: 'BO_',
+    envPrefix: 'APP_',
     optimizeDeps: {
-      include: ['cookie'],
+      exclude: ['@poc/core'],
     },
   }
 }

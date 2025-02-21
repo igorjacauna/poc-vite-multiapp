@@ -1,6 +1,4 @@
-
 declare module 'virtual:modules' {
-  import { Hookable } from "hookable";
   import type { RouteObject } from "react-router";
   type MenuEntry = {
     label: string;
@@ -8,12 +6,12 @@ declare module 'virtual:modules' {
     route: string;
   };
   
-  type MenuEntryFn = () => Promise<MenuEntry[]>;
-  type RoutesFn = () => Promise<RouteObject[]>;
+  type MenuEntryFn = () => MenuEntry[];
+  type RoutesFn = () => RouteObject[];
   
   const getRoutes: RoutesFn;
   const getFlags: () => string[];
   const getMenuEntries: MenuEntryFn;
-  const boot: (appInit: () => Promise<void>, hooks: Hookable<Hooks, string>) => Promise<void>;
+  const boot: () => Promise<void>;
   export { getRoutes, getFlags, getMenuEntries, boot, hooks }
 }
