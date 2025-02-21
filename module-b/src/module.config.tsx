@@ -1,24 +1,43 @@
 import { ModuleConfig } from '@poc/core/cli'
-import { rootStore } from '@poc/core/app';
+import { hooks, rootStore } from '@poc/core/app';
 import React from 'react'
-import store, { type ModuleBStore } from './store';
+import { initAuth } from './helpers/auth';
+import userStore from './store/userStore';
 
-const ModuleBHome = React.lazy(() => import('./pages/ModuleBHome'))
+const Login = React.lazy(() => import('./pages/Login'))
 
 const moduleAConfig: ModuleConfig = {
   moduleName: 'module-a',
-  routes: () => ([
-    {
-      path: '/module-b/home',
-      element: <ModuleBHome />
-    }
-  ]),
+  routes: () => {
+    return [
+      {
+        path: '/login',
+        element: <Login />
+      }
+    ];
+  },
+  menuEntries() {
+    return [
+      {
+        label: 'Feature flags',
+        route: '/feature-flags',
+      }
+    ]
+  },
   hooks: {
-    'app:beforeRender': async () => {
-      store.increaseTimer();
-      store.increaseTimer();
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      rootStore.registerStore<ModuleBStore>('ModuleB', store)
+    'cli:afterBoot': async () => {
+      rootStore.registerStore('User', userStore)
+      userStore.setToken('balbalblalb')
+      hooks.callHook('app:signedIn');
+    },
+    'app:signedIn': () => {
+      if (location.pathname === '/login') location.href = '/'
+    },
+    'app:signedOut': () => {
+      console.log('Logoutiou')
+      userStore.setToken('')
+      userStore.setUser({ name: '', email: '' })
+      if (location.pathname !== '/login') location.href = '/login'
     }
   },
 }
